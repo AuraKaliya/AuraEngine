@@ -3,12 +3,12 @@
 #include <QWidget>
 #include <QColor>
 
-
 #include "UIHeader.h"
 #include "uiwidget.h"
+
 namespace AuraUI {
 
-class AURAUI_LIB_DECL AuraSwitchBtn : public UIWidget
+class AuraLibrary_DECL AuraSwitchBtn : public UIWidget
 {
     Q_OBJECT
     Q_PROPERTY(QPoint btnPos READ btnPos WRITE setBtnPos NOTIFY btnPosChanged FINAL)

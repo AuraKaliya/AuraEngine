@@ -3,12 +3,12 @@
 
 #include "UIHeader.h"
 #include "uiwidget.h"
-#include "componentclicklabel.h"
 
 
 namespace AuraUI {
+class ComponentClickLabel;
 
-class AURAUI_LIB_DECL BaseSwitchWidget : public UIWidget
+class AuraLibrary_DECL BaseSwitchWidget : public UIWidget
 {
     Q_OBJECT
 public:

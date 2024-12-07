@@ -8,7 +8,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL CheckBoxBoxWidget : public UIWidget2C<QCheckBox,QLineEdit>
+class AuraLibrary_DECL CheckBoxBoxWidget : public UIWidget2C<QCheckBox,QLineEdit>
 {
     Q_OBJECT
 public:

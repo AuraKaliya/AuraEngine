@@ -31,6 +31,7 @@ class AURAUI_LIB_DECL AuraOpenGLModelManager : public QObject
     Q_PROPERTY(QColor backgroundColorMajor READ backgroundColorMajor WRITE setBackgroundColorMajor NOTIFY backgroundColorMajorChanged FINAL)
 
 public:
+    //static AuraOpenGLModelManager* getInstance(QObject* parent=nullptr);
     explicit AuraOpenGLModelManager(QObject *parent = nullptr);
 
     void addModel(QString id,AuraOpenGLModel* model);
@@ -66,6 +67,15 @@ public:
     QColor backgroundColorMajor() const;
     void setBackgroundColorMajor(const QColor &newBackgroundColorMajor);
 
+    bool modelInitFlag() const;
+    void setModelInitFlag(bool newModelInitFlag);
+
+private:
+
+    // AuraOpenGLModelManager(const AuraOpenGLModelManager&)=delete;
+    // AuraOpenGLModelManager& operator = (const AuraOpenGLModelManager&) = delete;
+    // static AuraOpenGLModelManager* m_instance;
+
 private:
     // Line_[UnitId] Frag_[UnitId]
     QMap<QString,AuraOpenGLModel*> m_modelDictionary;
@@ -84,6 +94,7 @@ private:
 
     QColor m_backgroundColorMajor;
 
+    bool m_modelInitFlag{false};
 signals:
 
     void modelNameChanged();

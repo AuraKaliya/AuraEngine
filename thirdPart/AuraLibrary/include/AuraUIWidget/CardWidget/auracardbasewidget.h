@@ -16,7 +16,7 @@ namespace AuraUI {
     卡片样式的Widget的基类 有圆角、阴影、默认为纯白色背景
     有是否浮动、嵌入时是否可拖拽
 */
-class AURAUI_LIB_DECL AuraCardBaseWidget : public UIWidget
+class AuraLibrary_DECL AuraCardBaseWidget : public UIWidget
 {
     Q_OBJECT
 public:

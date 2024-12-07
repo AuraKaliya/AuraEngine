@@ -7,7 +7,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL LabelBoxWidget : public UIWidget2C<QLabel,QLineEdit>
+class AuraLibrary_DECL LabelBoxWidget : public UIWidget2C<QLabel,QLineEdit>
 {
     Q_OBJECT
     Q_PROPERTY(bool buildCountFlag READ buildCountFlag WRITE setBuildCountFlag NOTIFY buildCountFlagChanged FINAL)

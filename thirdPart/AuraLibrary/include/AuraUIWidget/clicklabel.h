@@ -11,7 +11,8 @@
 
 #include "UIHeader.h"
 
-class AURAUI_LIB_DECL ClickLabel : public QLabel
+namespace AuraUI{
+class AuraLibrary_DECL ClickLabel : public QLabel
 {
     Q_OBJECT
 public:
@@ -35,4 +36,4 @@ signals:
     void clicked();
 };
 
-
+}//AuraUI

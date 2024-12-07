@@ -19,7 +19,8 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS SARibbon QCustomPlot AuraUIWidget Aura3DGraphics AuraTool Aura2DChart AuraLibrary AuraLibraryStatic)
+#SARibbon
+foreach(_cmake_expected_target IN ITEMS  QCustomPlot AuraUIWidget Aura3DGraphics AuraTool Aura2DChart AuraLibrary AuraLibraryStatic)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -51,7 +52,7 @@ set(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_DIR}")
 
 # 导入库列表
 set(IMPORTED_LIBS
-    SARibbon
+    #SARibbon
     QCustomPlot
     AuraUIWidget
     Aura3DGraphics
@@ -75,13 +76,19 @@ list(APPEND AuraLibraryStatic_Link
 "\$<LINK_ONLY:Qt${QT_VERSION_MAJOR}::Gui>"
 "\$<LINK_ONLY:Eigen3::Eigen>"
 "\$<LINK_ONLY:OpenGL::GL>"
-"\$<LINK_ONLY:SARibbon>"
+#"\$<LINK_ONLY:SARibbon>"
 "\$<LINK_ONLY:QCustomPlot>"
 "\$<LINK_ONLY:AuraUIWidget>"
 "\$<LINK_ONLY:Aura3DGraphics>"
 "\$<LINK_ONLY:AuraTool>"
 "\$<LINK_ONLY:Aura2DChart>"
 )
+
+# foreach(Python_COMPONENT in ${Python3_LIBRARIES})
+# list(APPEND AuraLibraryStatic_Link 
+# "\$<LINK_ONLY:${Python_COMPONENT}>"
+# )
+# endforeach()
 
 if("${QT_VERSION_MAJOR}" STREQUAL "6")
 list(APPEND AuraLibraryStatic_Link 

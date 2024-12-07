@@ -6,11 +6,14 @@
 #include "UIHeader.h"
 #include "uiwidget.h"
 
-#include "baseswitchwidget.h"
+
 
 /*内部组件非UIWidget体系*/
 namespace AuraUI {
-class AURAUI_LIB_DECL ClassifyDisplayWidget : public UIWidget
+class BaseSwitchWidget;
+class ComponentClickLabel;
+
+class AuraLibrary_DECL ClassifyDisplayWidget : public UIWidget
 {
     Q_OBJECT
 public:

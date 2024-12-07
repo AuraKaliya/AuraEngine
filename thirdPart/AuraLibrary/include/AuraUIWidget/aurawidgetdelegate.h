@@ -6,7 +6,7 @@
 
 #include "../AuraGlobal.h"
 namespace AuraUI {
-class AURAUI_LIB_DECL AuraWidgetDelegate : public QStyledItemDelegate
+class AuraLibrary_DECL AuraWidgetDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:

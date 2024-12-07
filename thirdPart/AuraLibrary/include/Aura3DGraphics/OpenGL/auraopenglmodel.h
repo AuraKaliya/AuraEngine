@@ -13,8 +13,12 @@
 #include <AuraGlobal.h>
 #include "AuraOpenGLEnumValue.h"
 
+#include <AuraTool/auraalgorithmtool.h>
+using BoundingBoxOBB = AuraTool::BoundingBoxOBB;
+using BoundingBoxAABB = AuraTool::BoundingBoxAABB;
 
 namespace AuraUI {
+
 struct PNVector{
     unsigned int PosIndex;
     unsigned int NormalIndex;
@@ -34,7 +38,8 @@ public:
     void initData(InitStratagy stratagy);
     void initBuffer();
     void reInitBuffer();
-    void setupVertexAttributes();
+
+    void setupVertexAttributes(unsigned int vao);
 public:
     explicit AuraOpenGLModel(QObject *parent = nullptr);
     void loadData(const QVector<QVector3D>& posList,const QVector<QVector3D>& normalList,const QVector<QVector2D>& uvList,const QVector<unsigned int> & indexList);
@@ -42,6 +47,7 @@ public:
     void loadData(const QVector<double>& dataList,const QVector<unsigned int> & indexList);
     void addData(const QVector<QVector3D> &postList, const QVector<QVector3D>& normalList, const QVector<unsigned int>& indexList);
     virtual void paint(QOpenGLShaderProgram * shader);
+    virtual void paint(QOpenGLContext* context,QSurface* surface,QOpenGLShaderProgram * shader);
     virtual void paintBoundingBox(QOpenGLShaderProgram * shader);
     void init(InitStratagy initStratagy);
 
@@ -91,12 +97,21 @@ public:
 
     void loadTexture(const QImage& image);
 
+    unsigned int vbo() const;
+    unsigned int ebo() const;
+
+    BoundingBoxOBB boundingBoxOBB() const;
+    BoundingBoxAABB boundingBoxAABB()const;
+
+    ModelBoundingBoxType boundingBoxType() const;
+
 protected:
 
     QString m_modelName;
     QOpenGLTexture* m_texture;
 
-    unsigned int m_vao=-1;
+    //vao 随 widget vbo ebo（具体数据）随model
+    //unsigned int m_vao=-1;
     unsigned int m_vbo=-1;
     unsigned int m_ebo=-1;
 
@@ -148,7 +163,10 @@ private:
     float m_shininess;
     ModelDrawStratagy m_normalDrawStratagy;     //正常状态的一般绘制策略
 
-
+    //bounding box
+    ModelBoundingBoxType m_boundingBoxType;
+    BoundingBoxOBB m_obb;   //此处必须要引入tool的头文件，所以后续应该写成impl的形式
+    BoundingBoxAABB m_aabb;
 };
 
 }//AuraUI

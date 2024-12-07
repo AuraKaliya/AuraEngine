@@ -64,3 +64,40 @@ Class::Class(){}    \
         }                                   \
         return m_instance;                  \
     }
+
+
+
+
+#define QOBJ_SINGLETON_H(Class) \
+private:\
+static Class* m_instance;\
+public:\
+static Class* getInstance(QObject*  parent = nullptr);\
+
+#define QOBJ_SINGLETON_H_CONSTRUCTOR(Class)\
+private:\
+explicit Class(QObject* parent = nullptr);\
+Class(const Class& ) =delete;\
+Class& operator = (const Class& ) = delete; \
+
+#define QOBJ_SINGLETON_CPP_CONSTRUCTOR_DEFAULT(Class)\
+Class::Class(QObject*parent):QObject{parent}{}\
+
+#define QOBJ_SINGLETON_CPP(Class)\
+Class* Class::m_instance = nullptr;\
+Class* Class::getInstance(QObject* parent)\
+{                                       \
+        static QMutex mutex;                \
+        QMutexLocker locker(&mutex);        \
+        if (m_instance == nullptr)          \
+    {                                   \
+            m_instance = new Class(parent);       \
+    }                                   \
+        return m_instance;                  \
+}
+
+
+
+
+
+

@@ -1,25 +1,25 @@
 # Commands may need to know the format version.
 set(CMAKE_IMPORT_FILE_VERSION 1)
-set_property(TARGET SARibbon APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)
+#set_property(TARGET SARibbon APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)
 
 set(DEBUG_SUFFIX "d")
 
-set_target_properties(SARibbon PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon${DEBUG_SUFFIX}.dll.a"
-  IMPORTED_IMPLIB_RELEASE "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon.dll.a"
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_DEBUG "Qt${QT_VERSION_MAJOR}::Widgets"
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_RELEASE "Qt${QT_VERSION_MAJOR}::Widgets"
-  IMPORTED_LOCATION_DEBUG "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon${DEBUG_SUFFIX}.dll"
-  IMPORTED_LOCATION_RELEASE "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon.dll"
-)
+# set_target_properties(SARibbon PROPERTIES
+#   IMPORTED_IMPLIB_DEBUG "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon${DEBUG_SUFFIX}.dll.a"
+#   IMPORTED_IMPLIB_RELEASE "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon.dll.a"
+#   IMPORTED_LINK_DEPENDENT_LIBRARIES_DEBUG "Qt${QT_VERSION_MAJOR}::Widgets"
+#   IMPORTED_LINK_DEPENDENT_LIBRARIES_RELEASE "Qt${QT_VERSION_MAJOR}::Widgets"
+#   IMPORTED_LOCATION_DEBUG "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon${DEBUG_SUFFIX}.dll"
+#   IMPORTED_LOCATION_RELEASE "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon.dll"
+# )
 
-list(APPEND _cmake_import_check_targets SARibbon)
-list(APPEND _cmake_import_check_files_for_SARibbon 
-    "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon${DEBUG_SUFFIX}.dll.a" 
-    "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon${DEBUG_SUFFIX}.dll" 
-    "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon.dll.a" 
-    "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon.dll"
-)
+# list(APPEND _cmake_import_check_targets SARibbon)
+# list(APPEND _cmake_import_check_files_for_SARibbon 
+#     "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon${DEBUG_SUFFIX}.dll.a" 
+#     "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon${DEBUG_SUFFIX}.dll" 
+#     "${CMAKE_CURRENT_LIST_DIR}/arc/libSARibbon.dll.a" 
+#     "${CMAKE_CURRENT_LIST_DIR}/bin/SARibbon.dll"
+# )
 
 # Import target "QCustomPlot" for configurations "Debug" and "Release"
 set_property(TARGET QCustomPlot APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)
@@ -47,8 +47,9 @@ set_property(TARGET AuraUIWidget APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG R
 set_target_properties(AuraUIWidget PROPERTIES
   IMPORTED_IMPLIB_DEBUG "${CMAKE_CURRENT_LIST_DIR}/arc/libAuraUIWidget${DEBUG_SUFFIX}.dll.a"
   IMPORTED_IMPLIB_RELEASE "${CMAKE_CURRENT_LIST_DIR}/arc/libAuraUIWidget.dll.a"
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_DEBUG "Qt${QT_VERSION_MAJOR}::Core;Qt${QT_VERSION_MAJOR}::Gui;Qt${QT_VERSION_MAJOR}::Widgets;SARibbon;AuraTool"
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_RELEASE "Qt${QT_VERSION_MAJOR}::Core;Qt${QT_VERSION_MAJOR}::Gui;Qt${QT_VERSION_MAJOR}::Widgets;SARibbon;AuraTool"
+  #SARibbon;
+  IMPORTED_LINK_DEPENDENT_LIBRARIES_DEBUG "Qt${QT_VERSION_MAJOR}::Core;Qt${QT_VERSION_MAJOR}::Gui;Qt${QT_VERSION_MAJOR}::Widgets;AuraTool"
+  IMPORTED_LINK_DEPENDENT_LIBRARIES_RELEASE "Qt${QT_VERSION_MAJOR}::Core;Qt${QT_VERSION_MAJOR}::Gui;Qt${QT_VERSION_MAJOR}::Widgets;AuraTool"
   IMPORTED_LOCATION_DEBUG "${CMAKE_CURRENT_LIST_DIR}/bin/AuraUIWidget${DEBUG_SUFFIX}.dll"
   IMPORTED_LOCATION_RELEASE "${CMAKE_CURRENT_LIST_DIR}/bin/AuraUIWidget.dll"
 )
@@ -104,6 +105,7 @@ list(APPEND _cmake_import_check_files_for_Aura3DGraphics
 # Import target "AuraTool" for configurations "Debug" and "Release"
 set_property(TARGET AuraTool APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)
 
+#    #####${Python_COMPONENT}
 set_target_properties(AuraTool PROPERTIES
   IMPORTED_IMPLIB_DEBUG "${CMAKE_CURRENT_LIST_DIR}/arc/libAuraTool${DEBUG_SUFFIX}.dll.a"
   IMPORTED_IMPLIB_RELEASE "${CMAKE_CURRENT_LIST_DIR}/arc/libAuraTool.dll.a"
@@ -147,7 +149,7 @@ list(APPEND AuraLibrary_Link
     "Qt${QT_VERSION_MAJOR}::PrintSupport"
     "Qt${QT_VERSION_MAJOR}::Core"
     "Qt${QT_VERSION_MAJOR}::Gui"
-    "SARibbon"
+    #"SARibbon"
     "QCustomPlot"
     "AuraUIWidget"
     "Aura3DGraphics"
@@ -164,6 +166,14 @@ else()
         "Qt${QT_VERSION_MAJOR}::OpenGL"
     )
 endif()
+
+# foreach(Python_COMPONENT in ${Python3_LIBRARIES})
+# list(APPEND AuraLibrary_Link 
+# "${Python_COMPONENT}"
+# )
+# endforeach()
+
+
 
 # Set target properties for both Debug and Release configurations
 set_property(TARGET AuraLibrary APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG RELEASE)

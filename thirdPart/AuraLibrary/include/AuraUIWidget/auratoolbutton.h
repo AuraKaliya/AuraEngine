@@ -24,7 +24,7 @@ enum class AuraToolButtonState:int{
     Hover
 };
 
-class AURAUI_LIB_DECL AuraToolButton : public UIWidget
+class AuraLibrary_DECL AuraToolButton : public UIWidget
 {
     Q_OBJECT
 public:

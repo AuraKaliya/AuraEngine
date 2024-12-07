@@ -8,4 +8,6 @@
 #include "OpenGL/auraopenglunitmanager.h"
 #include "OpenGL/auraopenglmodelmanager.h"
 
+#include "OpenGL/auraopenglmanager.h"
+
 #include "OpenGL/auraopenglwidget.h"

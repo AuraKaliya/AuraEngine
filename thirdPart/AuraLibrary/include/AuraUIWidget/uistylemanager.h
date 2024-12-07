@@ -1,9 +1,12 @@
 #pragma once
 
 #include <QObject>
+#include <QJsonObject>
+
 #include "uistyle.h"
 
 #include <AuraGlobal.h>
+
 
 namespace AuraUI {
 class UIWidget;
@@ -21,7 +24,7 @@ enum class  StyleStratagy : int {
     3. 通常是在initWidget中 通过Manager设置，然后再在initWidgetStyle中应用。
     4. initWidgetStyle 只设置自己的和非UIWidget部分。
 */
-class AURAUI_LIB_DECL UIStyleManager : public QObject
+class AuraLibrary_DECL UIStyleManager : public QObject
 {
     Q_OBJECT
 public:

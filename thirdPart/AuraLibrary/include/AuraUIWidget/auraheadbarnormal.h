@@ -5,12 +5,11 @@
 #include "UIHeader.h"
 #include "uiwidget.h"
 
-#include "clicklabel.h"
-
 
 namespace AuraUI {
+class ClickLabel;
 
-class AURAUI_LIB_DECL AuraHeadBarNormal : public UIWidget
+class AuraLibrary_DECL AuraHeadBarNormal : public UIWidget
 {
     Q_OBJECT
 public:

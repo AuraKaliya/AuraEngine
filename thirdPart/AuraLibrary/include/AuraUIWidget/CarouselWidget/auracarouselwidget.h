@@ -26,7 +26,7 @@ enum class CarouselStyle:int{
 };
 
 
-class AURAUI_LIB_DECL AuraCarouselWidget : public UIWidget
+class AuraLibrary_DECL AuraCarouselWidget : public UIWidget
 {
     Q_OBJECT
     friend class UIFunction;
@@ -55,8 +55,6 @@ public:
     void setAnimationDoingFlag(bool flag);
 
     QSize indicatorSize();
-    //void setIndicatorSize(const QSize & size);
-
     int indicatorSpacing();
 
 protected:

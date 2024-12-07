@@ -12,7 +12,7 @@
 #include <QVector>
 #include "../AuraGlobal.h"
 namespace AuraTool{
-class AURAUI_LIB_DECL OpenSSLTool
+class AuraLibrary_DECL OpenSSLTool
 {
 public:
     OpenSSLTool();

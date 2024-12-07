@@ -1,19 +1,24 @@
 #pragma once
 
 #include <QWidget>
-#include <QHBoxLayout>
-#include <QScrollArea>
-#include <QStackedWidget>
+
 
 #include "UIHeader.h"
 #include "uiwidget.h"
 
-#include "auraheadbarnormal.h"
-#include "auracardlabel.h"
-#include "paragraphshowwidget.h"
+
+
+//Qt 前置声明
+class QStackedWidget;
+class QHBoxLayout;
+class QScrollArea;
 
 namespace AuraUI {
-class AURAUI_LIB_DECL AuraStartWidgetNormal : public UIWidget
+
+class AuraHeadBarNormal;
+class ParagraphShowWidget;
+
+class AuraLibrary_DECL AuraStartWidgetNormal : public UIWidget
 {
     Q_OBJECT
 public:

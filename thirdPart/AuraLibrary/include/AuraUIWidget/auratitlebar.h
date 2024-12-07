@@ -14,7 +14,7 @@
 #include "uiwidget.h"
 namespace AuraUI {
 
-class AURAUI_LIB_DECL AuraTitleBar : public UIWidget
+class AuraLibrary_DECL AuraTitleBar : public UIWidget
 {
     Q_OBJECT
 public:

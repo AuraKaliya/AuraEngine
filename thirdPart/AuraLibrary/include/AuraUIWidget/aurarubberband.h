@@ -7,7 +7,7 @@
 
 //此处应该再进行分类
 namespace AuraUI {
-class AURAUI_LIB_DECL AuraRubberBand : public QRubberBand
+class AuraLibrary_DECL AuraRubberBand : public QRubberBand
 {
     Q_OBJECT
 public:

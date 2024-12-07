@@ -8,7 +8,7 @@
 #include "aurawidgetdelegate.h"
 
 namespace AuraUI {
-class AURAUI_LIB_DECL AuraTreeView : public QTreeView
+class AuraLibrary_DECL AuraTreeView : public QTreeView
 {
     Q_OBJECT
 public:

@@ -4,12 +4,15 @@
 
 #include "../UIHeader.h"
 #include "../uiwidget.h"
-//#include "auracardbasewidget.h"
+
+//Qt 前置声明
+class QPropertyAnimation;
 
 namespace AuraUI {
 /*
 
 */
+
 
 enum class CardStyle:int{
     Default,
@@ -55,7 +58,7 @@ inline bool hasFlag(CardState state, CardState flag)
     return (static_cast<int>(state) & static_cast<int>(flag)) != 0;
 }
 
-class AURAUI_LIB_DECL AuraCardWidget : public UIWidget
+class AuraLibrary_DECL AuraCardWidget : public UIWidget
 {
     Q_OBJECT
     friend class UIFunction;
@@ -131,7 +134,6 @@ private:
 
 signals:
     void stateChangedSig(CardState oldState,CardState newState);
-
     void mouseHoveredSig();
     void mouseEnteredSig();
     void mousePressedSig();

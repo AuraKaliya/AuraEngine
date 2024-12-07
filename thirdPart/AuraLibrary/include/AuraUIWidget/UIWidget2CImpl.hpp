@@ -1,16 +1,13 @@
 #pragma once
 
-//#include <QComboBox>
-//#include <QWidget>
 #include "uiwidget.h"
-//#include <QScopedPointer>
 #include <AuraGlobal.h>
 
 namespace AuraUI {
 template<typename T1, typename T2,
          typename = std::enable_if_t<std::is_base_of<QWidget, T1>::value
                                      && std::is_base_of<QWidget, T2>::value>>
-class AURAUI_LIB_DECL UIWidget2CImpl
+class AuraLibrary_DECL UIWidget2CImpl
 {
 public:
     explicit UIWidget2CImpl(T1 *firstWidget, T2 *secondWidget)
@@ -29,14 +26,14 @@ public:
     void initWidget(T* widget, std::enable_if_t<std::is_base_of<UIWidget, T>::value>* = nullptr)
     {
         widget->initWidget();
-        qDebug()<<"init by uiwidget";
+        //qDebug()<<"init by uiwidget";
     }
 
     //该方法不可行
     template<typename T>
     void initWidget(T* w, std::enable_if_t<!std::is_base_of<UIWidget, T>::value>* = nullptr)
     {
-        qDebug()<<"init by normal";
+        //qDebug()<<"init by normal";
 
         // if(std::is_base_of<QComboBox, T>::value)
         // {

@@ -6,7 +6,9 @@
 #include "baseswitchwidget.h"
 
 namespace AuraUI {
-class AURAUI_LIB_DECL SwitchWidget : public BaseSwitchWidget
+class ClickLabel ;
+class ComponentClickLabel;
+class AuraLibrary_DECL SwitchWidget : public BaseSwitchWidget
 {
     Q_OBJECT
 public:

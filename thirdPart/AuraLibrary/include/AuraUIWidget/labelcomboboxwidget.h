@@ -7,7 +7,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL LabelComboBoxWidget : public /*UIWidget2C*/ UIWidget2C<QLabel,QComboBox>
+class AuraLibrary_DECL LabelComboBoxWidget : public /*UIWidget2C*/ UIWidget2C<QLabel,QComboBox>
 {
     Q_OBJECT
     Q_PROPERTY(bool buildCountFlag READ buildCountFlag WRITE setBuildCountFlag NOTIFY buildCountFlagChanged FINAL)

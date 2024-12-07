@@ -25,13 +25,14 @@
 #include "auratreeview.h"
 #include "auratreewidget.h"
 
-#include "auraribbonwidgetsa.h"
-
 #include "aurastartwidgetnormal.h"
 
 #include "auracardlabel.h"
 
 #include "CardWidget/auracardwidget.h"
 #include "CarouselWidget/auracarouselwidget.h"
+#include "ClassifyWidget/auraclassifywidget.h"
+#include "TreeWidget/aurapropertytreewidget.h"
+#include "PropertyBox/aurapropertybox.h"
 
 #include "HeadBar/auraheadbar.h"

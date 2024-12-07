@@ -20,7 +20,7 @@ enum class HeaderBarStyle:int{
     OnlyMinium,
 };
 
-class AURAUI_LIB_DECL AuraHeadBar : public UIWidget
+class AuraLibrary_DECL AuraHeadBar : public UIWidget
 {
     Q_OBJECT
     //Q_IMPL_H(AuraHeadBar)
@@ -31,7 +31,6 @@ public:
     void initWidget()override;
     void initWidgetStyle()override;
     void applyWidgetStyle()override;
-
     void initWidget(HeaderBarStyle style);
 
     QString title()const;
@@ -41,6 +40,7 @@ public:
 
     void linkToWidget(QWidget * w);
     void addComponentWidget(QWidget* widget);
+    void setCanBeDraged(bool flag);
 
     //=========================================================
    // void changeLeftDirection(bool flag = false);

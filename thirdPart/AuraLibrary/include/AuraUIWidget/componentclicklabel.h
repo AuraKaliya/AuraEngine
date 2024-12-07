@@ -10,7 +10,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL ComponentClickLabel : public ClickLabel ,public Entity
+class AuraLibrary_DECL ComponentClickLabel : public ClickLabel ,public Entity
 {
     Q_OBJECT
 public:

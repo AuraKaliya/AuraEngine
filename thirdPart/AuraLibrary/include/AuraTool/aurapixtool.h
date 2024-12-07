@@ -16,10 +16,14 @@
 #include <QtMath>
 #endif
 
-namespace AuraTool{
-class AURAUI_LIB_DECL AuraPixTool
-{
+#include <AuraTemplate/Singleton.hpp>
 
+
+namespace AuraTool{
+class AuraLibrary_DECL AuraPixTool
+{
+    SINGLETON_H(AuraPixTool)
+    SINGLETON_H_CONSTRUCTOR(AuraPixTool)
 public:
 
     //处理图像获取圆角图
@@ -29,8 +33,8 @@ public:
     static QPixmap applyGaussianBlur(QPixmap pix, qreal radius);
 
 
-public:
-    AuraPixTool();
+// public:
+//     AuraPixTool();
 };
 
 }//AuraTool

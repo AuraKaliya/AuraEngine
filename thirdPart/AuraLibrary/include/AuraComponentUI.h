@@ -36,7 +36,7 @@
 #include <AuraUIWidget/aurapropertyeditbox.h>
 #include <AuraUIWidget/auramultipropertyeditbox.h>
 #include <AuraUIWidget/aurapropertyselectbox.h>
-#include <AuraUIWidget/auraribbonwidgetsa.h>
+
 #include <AuraUIWidget/aurastartwidgetnormal.h>
 #include <AuraUIWidget/auracardlabel.h>
 
@@ -46,7 +46,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL  AuraComponentUI
+class AuraLibrary_DECL  AuraComponentUI
 {
 /*
     仅提供获取对象途径，不提供对象管理
@@ -79,7 +79,7 @@ public:
     static AuraPropertyEditBox* createAuraPropertyEditBox(QWidget* parent =nullptr);
     static AuraMultiPropertyEditBox* createAuraMultiPropertyEditBox(QWidget* parent = nullptr);
     static AuraPropertySelectBox* createAuraPropertySelectBox(QWidget *parent=nullptr);
-    static AuraRibbonWidgetSA* createAuraRibbonWindowSA(QWidget* parenet =nullptr);
+    //static AuraRibbonWidgetSA* createAuraRibbonWindowSA(QWidget* parenet =nullptr);
 
     static AuraCardWidget* createAuraCardWidget(QWidget* parent =nullptr);
     static AuraCarouselWidget* createAuraCarouselWidget(QWidget* parent = nullptr);
@@ -87,7 +87,7 @@ public:
     static AuraCardLabel* createAuraCardLabel(QWidget* parent = nullptr);
     static AuraStartWidgetNormal* createAuraStartWidgetNormal(QWidget* parent = nullptr);
 
-    static AuraOpenGLWidget* createAuraOpenGLWidget(QWidget* parent =nullptr);
+    //static AuraOpenGLWidget* createAuraOpenGLWidget(QWidget* parent =nullptr);
 
     static void init(AuraUIPath path);
 

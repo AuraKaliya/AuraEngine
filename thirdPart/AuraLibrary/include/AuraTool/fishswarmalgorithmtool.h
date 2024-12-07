@@ -10,7 +10,7 @@
 namespace AuraTool {
 
 
-class AURAUI_LIB_DECL Fish
+class AuraLibrary_DECL Fish
 {
 
 public:
@@ -34,7 +34,7 @@ private:
 };
 
 
-class AURAUI_LIB_DECL FishSwarm:public QObject
+class AuraLibrary_DECL FishSwarm:public QObject
 {
     Q_OBJECT
 public:
@@ -50,7 +50,7 @@ private:
 };
 
 
-class AURAUI_LIB_DECL FishSwarmAlgorithmTool : public QObject
+class AuraLibrary_DECL FishSwarmAlgorithmTool : public QObject
 {
     Q_OBJECT
 public:

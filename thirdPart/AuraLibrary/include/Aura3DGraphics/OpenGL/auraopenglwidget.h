@@ -28,59 +28,80 @@ class AURAUI_LIB_DECL AuraOpenGLWidget :public QOpenGLWidget,public QOpenGLFunct
 {
     Q_OBJECT
 public:
-    explicit AuraOpenGLWidget(QWidget *parent = nullptr);
-    //explicit AuraOpenGLWidget(QWindow *parent = nullptr);
+    explicit AuraOpenGLWidget(std::shared_ptr<AuraOpenGLUnitManager> unitManager,std::shared_ptr<AuraOpenGLModelManager> modelManager =nullptr,QWidget *parent = nullptr);
+    ~AuraOpenGLWidget();
+
     void initWidget(){
-        qDebug()<<"AuraOpenGLWidget::initWidget | call.";
         m_shaderDir=AURA_LIBRARY_SHADER_DIR;
         m_moduleDir=AURA_LIBRARY_MODULE_DIR;
         m_textureDir=AURA_LIBRARY_TEXTURE_DIR;
     }
 
-    QRect getSelectRect(QPoint startPos,QPoint endPos);
-    QPair<bool,QVector<QVector3D>> checkSelectModel(const QVector3D & origPos,const QVector3D& rayDir,AuraOpenGLModel* model);
-    bool checkSelectModel(const QRect& rect,AuraOpenGLModel* model);
-
-
-    void initTest();
+    void initWidget(const QString& shaderDir, const QString& moduleDir,const QString& textureDir);
 
 public:
+    //可以放至Aura3DGraphicsTool中
+    double posXFromOpenGLToQt(double posX);//可提出去
+    double posYFromOpenGLToQt(double posY);//可提出去
+    double posXFromQtToOpenGL(double posX);//可提出去
+    double posYFromQtToOpenGL(double posY);//可提出去
 
-    AuraOpenGLUnitManager *unitManager() const;
+    std::shared_ptr<AuraOpenGLModelManager> modelManager()  const;
+    std::shared_ptr<AuraOpenGLUnitManager>  unitManager()   const;
 
-    double posXFromOpenGLToQt(double posX);
-    double posYFromOpenGLToQt(double posY);
-    double posXFromQtToOpenGL(double posX);
-    double posYFromQtToOpenGL(double posY);
+    //==========================context===================
+    QOpenGLContext *mainContext() const;
+    QSurface *surface() const;
 
+    bool loadContextFlag() const;
+
+    void setMainContext(QOpenGLContext *newMainContext);
+    //==========================context===================
+
+    bool modelInitFlag() const;
+    void setModelInitFlag(bool newModelInitFlag);
+public:
+    //test
     void checkUnit();
-    void initModel();
-
-    AuraOpenGLModelManager *modelManager() const;
-
 protected:
+    //init
+    void initModel();
+    void initVAOs();
+    void updateContext();
+
+    //draw
     void drawAxisXYZ(QOpenGLShaderProgram* shader);
     void drawCone(const QVector3D & pos,const QQuaternion& rotation );
     void useShader(QOpenGLShaderProgram* shader);
 
+    //pick
+    QRect getSelectRect(QPoint startPos,QPoint endPos); //可提出去
+    QPair<bool,QVector<QVector3D>> checkSelectModel(const QVector3D & origPos,const QVector3D& rayDir,AuraOpenGLModel* model);
+    bool checkSelectModel(const QRect& rect,AuraOpenGLModel* model);
+
+
     void initializeGL()override;
     void resizeGL(int w, int h)override;
     void paintGL()override;
-    void paintEvent(QPaintEvent* e)override;
+
     void keyPressEvent(QKeyEvent *e)override;
+    void keyReleaseEvent(QKeyEvent*e)override;
     void wheelEvent(QWheelEvent * e)override;
     void mousePressEvent(QMouseEvent* e)override;
     void mouseMoveEvent(QMouseEvent *e)override;
     void mouseReleaseEvent(QMouseEvent *e)override;
-
 private:
+
+    QVector<unsigned int*> m_vaos;
+    int m_validVaoCount=0;
+
     QString m_shaderDir;
     QString m_moduleDir;
     QString m_textureDir;
 
     AuraOpenGLCamera * m_camera=nullptr;    //必要
-    AuraOpenGLUnitManager * m_unitManager=nullptr;
-    AuraOpenGLModelManager * m_modelManager=nullptr;
+    std::shared_ptr<AuraOpenGLUnitManager>  m_unitManager=nullptr;
+    std::shared_ptr<AuraOpenGLModelManager> m_modelManager=nullptr;
 
     //mouse control
     QPoint m_startPoint;
@@ -91,19 +112,31 @@ private:
     //rubberband
     AuraRubberBand * m_rubberBand=nullptr;
 
-    //tmp --整个大的模型的整体旋转---内部的各模型都进行同样旋转
-   //QQuaternion m_modelRotation;
-
     QOpenGLShaderProgram * m_nowShader=nullptr;
+
+    bool m_modelInitFlag =false;
 
     bool m_drawBackgroundFlag;
     bool m_textShowFlag;
-    bool m_modelInitFlag =false;
+
     bool m_drawBoundingBoxFlag;
     bool m_selectRectFlag;
+    bool m_shiftFlag{false};
+
+    bool m_loadContextFlag{false};
+    bool m_sharedContextFlag{false};
+    QOpenGLContext * m_mainContext{nullptr};
+    QOpenGLContext * m_renderContext{nullptr};
+    QSurface * m_surface{nullptr};
+
+
 
 signals:
 
 };
 
 }//AuraUI
+
+//===================废弃方案=============================
+
+//void loadContext(QSurface* surface,QOpenGLContext* mainContext);

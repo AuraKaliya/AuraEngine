@@ -7,8 +7,9 @@
 
 #include "UIHeader.h"
 #include "uiwidget.h"
+
 namespace AuraUI {
-class AURAUI_LIB_DECL AuraPropertySelectBox : public UIWidget
+class AuraLibrary_DECL AuraPropertySelectBox : public UIWidget
 {
     Q_OBJECT
 public:

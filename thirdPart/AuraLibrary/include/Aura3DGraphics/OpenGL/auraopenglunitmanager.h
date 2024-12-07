@@ -27,18 +27,12 @@ struct AuraOpenGLLinkUnitInfomation{
     unsigned int LinkUnitId;
     QVector<unsigned int> LinkPointList;
 };
-
+//unitManager 应该再添加一个：工程层 project对应一组unit，然后各w通过project获取需要的unit组
 class AURAUI_LIB_DECL AuraOpenGLUnitManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit AuraOpenGLUnitManager(QObject *parent = nullptr);
-
-    //void initPointList(const QVector<AuraOpenGLPoint>& pointList);
-    //void initPointList(const QVector<QVector3D>& posList);
-
-    //void initUnitList(const QVector<AuraOpenGLUnit>& unitList);
-    //void initUnitList(const QVector<unsigned int>& unitIdList,const QVector<QVector<unsigned int>>& pointListList,const QVector<GeometryType>& typeList);
+    explicit AuraOpenGLUnitManager(const QString projectName = "Project",QObject *parent = nullptr);
 
     void initPointDictionary(const QMap<unsigned int,AuraOpenGLPoint> & pointDictionary);
     void addPoint(unsigned int id,AuraOpenGLPoint point);
@@ -52,19 +46,32 @@ public:
     float columRadius() const;
     void setColumRadius(float newColumRadius);
 
+    //==========待完善=============
     void normalized(int base);
+    //需要添加normalizedPointDictionary
+    //需要添加normalized flag 和 在返回/使用point时 根据flag状态选择对应的PointDictionary
+    //==========待完善=============
 
     QMap<unsigned int, AuraOpenGLPoint> pointDictionary() const;
-
     QMap<unsigned int, AuraOpenGLUnit> unitDictionary() const;
 
     float cubeRadius() const;
     void setCubeRadius(float newCubeRadius);
+    bool unitNeedToCreateModelFlag() const;
+
+    void setUnitNeedToCreateModelFlag(bool newUnitNeedToCreateModel);
+
+private:
+
+    AuraOpenGLUnitManager(const AuraOpenGLUnitManager&)=delete;
+    AuraOpenGLUnitManager& operator = (const AuraOpenGLUnitManager&)=delete;
 
 protected:
     void initUnitLinkDictionary();
 
 private:
+    QString m_projectName;
+
     //各类单元基础属性（边长、管径等）
     float m_tubeRadius;
     float m_columRadius;
@@ -75,7 +82,8 @@ private:
     QMap<unsigned int,AuraOpenGLUnit> m_unitDictionary;
     QMap<unsigned int,QVector<AuraOpenGLLinkUnitInfomation>> m_unitLinkDictionary;
 
-
+    //flag
+    bool m_unitNeedToCreateModelFlag{true};
 
 signals:
 

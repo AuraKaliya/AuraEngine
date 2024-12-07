@@ -7,7 +7,7 @@
 
 namespace  AuraUI {
 
-class AURAUI_LIB_DECL WheelSlideWidget : public UIWidget
+class AuraLibrary_DECL WheelSlideWidget : public UIWidget
 {
     Q_OBJECT
 public:
@@ -25,7 +25,7 @@ public:
     void setArea(int width,int height);
     void addWidgetInArea(QWidget*w,int x,int y);
 
-    void clearWidgetList();
+    void clearWidget();
 
     int getBorder() const;
     void setBorder(int newBorder);

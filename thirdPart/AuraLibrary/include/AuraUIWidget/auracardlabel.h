@@ -9,7 +9,7 @@
 
 namespace AuraUI {
 
-class AURAUI_LIB_DECL AuraCardLabel : public UIWidget
+class AuraLibrary_DECL AuraCardLabel : public UIWidget
 {
     Q_OBJECT
     friend class UIFunction;

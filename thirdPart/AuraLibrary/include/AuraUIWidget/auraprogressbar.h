@@ -1,11 +1,13 @@
 #pragma once
 
 #include <QColor>
-#include <QString>
-#include <QTimer>
 
 #include "UIHeader.h"
 #include "uiwidget.h"
+
+
+//Qt 前置声明
+class QTimer;
 
 namespace AuraUI {
 struct Progress{
@@ -13,7 +15,7 @@ struct Progress{
     unsigned int maxValue;
 };
 
-class AURAUI_LIB_DECL AuraProgressBar : public UIWidget
+class AuraLibrary_DECL AuraProgressBar : public UIWidget
 {
     Q_OBJECT
     friend class UIFunction;
@@ -52,6 +54,9 @@ public:
     void setAnimationFlag(bool newAnimationFlag);
 
     void setAnimationInterval(unsigned int value);
+
+
+
 protected:
     void paintEvent(QPaintEvent* e)override;
 
@@ -64,7 +69,6 @@ protected:
     QString m_suffixText;
 
     QFont m_textFont;
-
 
     Progress m_valueProgress;
 

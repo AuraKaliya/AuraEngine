@@ -6,13 +6,16 @@
 #include <QList>
 #include <QMap>
 #include "../AuraGlobal.h"
+#include <AuraTemplate/Singleton.hpp>
 
 namespace AuraTool {
 
-class AURAUI_LIB_DECL AuraPropertyTool
+class AuraLibrary_DECL AuraPropertyTool
 {
+    SINGLETON_H(AuraPropertyTool)
+    SINGLETON_H_CONSTRUCTOR(AuraPropertyTool)
 public:
-    AuraPropertyTool();
+    //AuraPropertyTool();
     static QList<QMetaProperty> getProperty(QObject* obj, unsigned int start ,unsigned int num = 0);
     static QString getPropertyName(const QString& property);
     static void setPropertyName(const QString& property,const QString& name);

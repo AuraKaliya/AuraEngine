@@ -8,11 +8,9 @@
 
 #include "UIHeader.h"
 
-#include "auratitlebar.h"
-
 namespace AuraUI {
 
-class AURAUI_LIB_DECL AuraDockWidget : public QDockWidget
+class AuraLibrary_DECL AuraDockWidget : public QDockWidget
 {
     Q_OBJECT
 public:

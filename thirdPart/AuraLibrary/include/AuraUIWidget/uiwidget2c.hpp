@@ -15,7 +15,7 @@ namespace AuraUI {
 template<typename T1, typename T2,
          typename = std::enable_if_t<std::is_base_of<QWidget, T1>::value
                                      && std::is_base_of<QWidget, T2>::value>>
-class AURAUI_LIB_DECL UIWidget2C : public UIWidget
+class AuraLibrary_DECL UIWidget2C : public UIWidget
 {
 public:
     explicit UIWidget2C(T1* firstWidget, T2* secondWidget, QWidget *parent = nullptr)

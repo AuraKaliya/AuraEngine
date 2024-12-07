@@ -1,21 +1,19 @@
 #pragma once
+
 #include <QWidget>
 #include <QString>
 #include <QMap>
 #include <QDir>
 #include <QApplication>
-
 #include <QFile>
 #include <QByteArray>
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QColor>
-
 #include <functional>
 //
 #include <QDebug>
 //
-
 #include <AuraGlobal.h>
 
 #include "AuraTemplate/Property.hpp"
@@ -29,7 +27,7 @@ using UIStyleInitByJsonFunction=void(*)(UIStyle*,const QJsonObject&);
 using UIStyleStrFunction=std::function<QString()>;
 
 
-class AURAUI_LIB_DECL Shadow
+class AuraLibrary_DECL Shadow
 {
 public:
     Shadow(QColor sdColor,int x,int y,int size);
@@ -52,7 +50,7 @@ private:
     int m_size = 0;
 };
 
-class AURAUI_LIB_DECL UIBaseStyle
+class AuraLibrary_DECL UIBaseStyle
 {
 public:
     UIBaseStyle(QColor bk,QColor text,unsigned int radius,Shadow shadow);
@@ -76,12 +74,12 @@ private:
     Shadow m_shadow;
 };
 
-struct AURAUI_LIB_DECL UIAnimationStyle
+struct AuraLibrary_DECL UIAnimationStyle
 {
 
 };
 
-class AURAUI_LIB_DECL UIStyle
+class AuraLibrary_DECL UIStyle
 {
 public:
     UIStyle(const QString& styleName = "Default");

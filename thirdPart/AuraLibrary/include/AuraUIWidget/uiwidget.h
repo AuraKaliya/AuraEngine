@@ -1,9 +1,11 @@
 #pragma once
+
 #include <QWidget>
 #include <QVector>
+#include <QString>
 #include <QPainter>
+#include <QStyleOption>
 #include <QJsonObject>
-#include <QJsonArray>
 
 #include "UIHeader.h"
 
@@ -16,7 +18,9 @@ namespace AuraUI {
     4. initWidgetStyle 只设置自己的和非UIWidget部分。
 */
 
-class AURAUI_LIB_DECL UIWidget : public QWidget
+
+
+class AuraLibrary_DECL UIWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -46,6 +50,8 @@ public:
     StyleStratagy uiStyleStratagy() const;
     void setUiStyleStratagy(StyleStratagy newUiStyleStratagy);
 
+    void addChirldWidget(UIWidget* w);
+
 protected:
     void setAutoInitUIStyleFlag(bool newAutoInitUIStyleFlag);
     void setUiDirectionFlag(UIDirection newUiDirectionFlag);
@@ -55,10 +61,11 @@ protected:
     // style-property
     UIStyle m_uiStyle;
 
+
 private:
     //之后会将其整合至impl中
 
-    //专门用于管理UIStyle的容器
+    //专门用于管理子部件的容器
     QVector<UIWidget*> m_widgetList;
     //自动设置UIStyle的控制位
     bool m_autoInitUIStyleFlag;
@@ -72,6 +79,9 @@ private:
 
     // 用于管理style-Property初始化的控制位
     bool m_uiStyleReadyFlag;
+
+    // 用于标识对象初始化进程
+    bool m_initFlag;
 
 signals:
     void setUIStyleFinished();

@@ -1,12 +1,12 @@
 #pragma once
 
 #include <QSet>
-#include "auraopenssltool.h"
 
+#include "auraopenssltool.h"
 #include "../AuraGlobal.h"
 namespace AuraTool {
 
-struct AURAUI_LIB_DECL SerialNumberInformation
+struct AuraLibrary_DECL SerialNumberInformation
 {
     QString mac;
     QString extraInfo;
@@ -16,8 +16,9 @@ struct AURAUI_LIB_DECL SerialNumberInformation
 };
 
 
-class AURAUI_LIB_DECL AuraSerialNumberTool
+class AuraLibrary_DECL AuraSerialNumberTool
 {
+
 public:
     static AuraSerialNumberTool* getInstance();
 

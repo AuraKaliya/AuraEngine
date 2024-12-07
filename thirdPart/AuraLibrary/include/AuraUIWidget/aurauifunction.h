@@ -1,28 +1,22 @@
 #pragma once
 
-#include <QAnimationGroup>
-#include <QPropertyAnimation>
-#include <QPainter>
-#include <QPainterPath>
-#include <QString>
-#include <QTime>
-#include <QTimer>
-
 #include "../AuraGlobal.h"
-#include "uistyle.h"
 
-#ifndef USE_QT6
-#include <QtMath>
-#endif
+#include <QRect>
 
+
+
+//Qt 前置声明
+class QPainter;
 
 namespace AuraUI{
-
+class Shadow;
 class AuraProgressBar;
 class AuraSwitchBtn;
 class AuraCardLabel;
 class AuraCardWidget;
 class AuraCarouselWidget;
+class AuraClassifyWidget;
 
 using AuraProgressBarPaintFunction = void (*)(QPainter *,AuraProgressBar*);
 using SwitchBarPaintFunction = void (*)(QPainter *,AuraSwitchBtn*);
@@ -32,9 +26,11 @@ using CardWidgetPaintFunction = void(*)(QPainter*,AuraCardWidget*);
 using CardWidgetAnimationFunction  = void(*)(AuraCardWidget*);
 using CarouselWidgetPaintFunction = void(*)(QPainter*,AuraCarouselWidget*);
 using CarouselWidgetAnimationFunction = void(*)(AuraCarouselWidget*);
+using ClassifyWidgetPaintFunction = void(*)(QPainter*,AuraClassifyWidget*);
+using ClassifyWidgetLayoutFunction = void(*)(AuraClassifyWidget*);
 //using CarouselDefaultRelayoutFunction
 //=============================================================================
-class AURAUI_LIB_DECL UIFunction
+class AuraLibrary_DECL UIFunction
 {
 public:
     static void DrawDefaultProgressBar(QPainter * p,AuraProgressBar * obj);
@@ -71,7 +67,10 @@ public:
     //==================================================Carousel Widget
 
 
-
+    //========================================Classify Widget
+    static void DrawDefaultClassifyWidget(QPainter* p ,AuraClassifyWidget* obj);
+    static void LayoutDefaultClassifyWidget(AuraClassifyWidget* obj);
+    //========================================Classify Widget
 
 
     //======================================================

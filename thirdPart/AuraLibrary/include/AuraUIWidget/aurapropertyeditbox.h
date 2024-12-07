@@ -9,7 +9,7 @@
 #include "uiwidget.h"
 namespace AuraUI {
 
-class AURAUI_LIB_DECL AuraPropertyEditBox : public UIWidget
+class AuraLibrary_DECL AuraPropertyEditBox : public UIWidget
 {
     Q_OBJECT
 public:

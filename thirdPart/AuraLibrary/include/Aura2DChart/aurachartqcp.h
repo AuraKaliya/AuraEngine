@@ -14,7 +14,7 @@
 
 
 namespace AuraUI{
-class AURAUI_LIB_DECL AuraChartQCP : public QCustomPlot
+class AuraLibrary_DECL AuraChartQCP : public QCustomPlot
 {
     Q_OBJECT
 public:

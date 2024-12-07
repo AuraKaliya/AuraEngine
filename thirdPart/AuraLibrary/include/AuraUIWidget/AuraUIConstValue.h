@@ -26,7 +26,7 @@ enum class WidgetDragStratagy
     Selected,
 };
 
-class AURAUI_LIB_DECL AuraUIPath
+class AuraLibrary_DECL AuraUIPath
 {
 public:
 void init(){
@@ -35,6 +35,8 @@ void init(){
     ModuleDir = AURAUI_MODULE_DIR;
     SAThemeDir = AURAUI_SATHEME_DIR;
     RCCDir = AURAUI_RCC_DIR;
+    TextureDir =AURAUI_TEXTURE_DIR;
+    ScriptDir = AURA_LIBRARY_SCRIPT_DIR;
 }
 
 mutable QString StyleDir;
@@ -42,7 +44,8 @@ mutable QString ShaderDir;
 mutable QString ModuleDir;
 mutable QString SAThemeDir;
 mutable QString RCCDir;
-
+mutable QString TextureDir;
+mutable QString ScriptDir;
 };
 
 }// namespace AuraUI
