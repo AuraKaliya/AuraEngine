@@ -1,12 +1,6 @@
-#include "auramainwindow.h"
+#include "mainwindow.h"
 
-AuraMainWindow::AuraMainWindow(QWidget *parent)
-    : QMainWindow{parent}
-{
-    setCentralWidget(&m_mainWidget);
-}
-
-void AuraMainWindow::initMenuBar()
+MainWindow::MainWindow(QWidget *parent)
 {
 
 }

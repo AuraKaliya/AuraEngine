@@ -13,9 +13,9 @@ void SystemStateObject::connectToSystem(SystemObject *sys)
 {
     m_connectSystem=sys;
 
-    m_startState    ->assignProperty(sys,"state",(int)SystemState::Start);
-    m_workingState  ->assignProperty(sys,"state",(int)SystemState::Working);
-    m_closeState    ->assignProperty(sys,"state",(int)SystemState::Close);
+    m_startState    ->assignProperty(sys,"state",(int)EngineConstValue::SystemState::Start);
+    m_workingState  ->assignProperty(sys,"state",(int)EngineConstValue::SystemState::Working);
+    m_closeState    ->assignProperty(sys,"state",(int)EngineConstValue::SystemState::Close);
 
     connect(m_workingState, SIGNAL(entered()),      this,SLOT(stateSwitch()),       Qt::ConnectionType(Qt::AutoConnection | Qt::UniqueConnection));
     connect(m_closeState,   SIGNAL(entered()),      this,SLOT(stateSwitch()),       Qt::ConnectionType(Qt::AutoConnection | Qt::UniqueConnection));
@@ -23,7 +23,7 @@ void SystemStateObject::connectToSystem(SystemObject *sys)
     this->setInitialState(m_startState);
 }
 
-void SystemStateObject::stateSwitch(SystemState state)
+void SystemStateObject::stateSwitch(EngineConstValue::SystemState state)
 {
     //主动进行状态转换
     //检查

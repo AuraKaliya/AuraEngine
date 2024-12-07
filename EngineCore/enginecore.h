@@ -1,4 +1,6 @@
 #pragma once
+#include <QObject>
+#include "Core/EngineRef.hpp"
 
 /*
 引擎之心
@@ -7,13 +9,16 @@
 3.存储引擎的各全局数据
 ·构造函数中创建全局变量、构建各系统
 */
+
 namespace AuraEngine::EngineCore    
 {
-class EngineCore
+
+class AuraEngine_DECL EngineCore
 {
 public:
     EngineCore();
     ~EngineCore();
 
 };
+
 }

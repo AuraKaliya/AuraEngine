@@ -1,3 +1,4 @@
+#include <qglobal.h>
 // SINGLETON_DEFINE
 #ifndef SINGLETON_DEFINE
 #define SINGLETON_DEFINE
@@ -32,10 +33,15 @@ Class::Class(){}    \
 
 #endif
 
-
-
 //Engine build
 
+#if defined(AuraEngine_Library)
+#define AuraEngine_DECL Q_DECL_EXPORT
+#elif defined (AuraEngine_Use_Library)
+#define AuraEngine_DECL Q_DECL_IMPORT
+#else
+#define AuraEngine_DECL
+#endif
 
 
 

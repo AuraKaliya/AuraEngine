@@ -15,16 +15,16 @@
 
 namespace AuraEngine::Core  
 {
-class SystemObject : public QObject
+class AuraEngine_DECL SystemObject : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(ConstValue::SystemState state READ state WRITE setState NOTIFY stateChanged)
+    Q_PROPERTY(EngineConstValue::SystemState state READ state WRITE setState NOTIFY stateChanged)
 
 public:
 
 protected:
     QObject* m_manager;
-    SystemState m_state;
+    EngineConstValue::SystemState m_state;
 
 public:
     explicit SystemObject(QObject *parent = nullptr);
@@ -33,14 +33,14 @@ public:
     virtual bool systemInit()=0;
     virtual bool systemClose()=0;
 
-    SystemState state() const;
-    void setState(SystemState newState);
+    EngineConstValue::SystemState state() const;
+    void setState(EngineConstValue::SystemState newState);
 
     int testName() const;
     void setTestName(int newTestName);
 
 signals:
-    void stateChanged(SystemState state);
+    void stateChanged(EngineConstValue::SystemState state);
 };
 
 }

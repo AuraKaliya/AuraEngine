@@ -33,4 +33,15 @@ target_link_libraries(${module_name} PRIVATE
     ${${module_name}_DEPEND_LIBRARIES}
     ${${module_name}_RUNTIME_LIBRARIES}
 )
+
+target_compile_definitions(${module_name} PRIVATE AuraEngine_Library)
+
 #add_dependencies(${module_name} ${${module_name}_DEPEND_LIBRARIES}) 
+
+install(TARGETS
+    ${module_name}
+    EXPORT ${module_name}Target
+    RUNTIME DESTINATION "${Module_Output_Path}/"
+    LIBRARY DESTINATION "${Module_Output_Path}/"
+    ARCHIVE DESTINATION "${Module_Output_Path}/"
+)

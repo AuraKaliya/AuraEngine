@@ -45,3 +45,6 @@ install(TARGETS
     LIBRARY DESTINATION "${Module_Output_Path}/"
     ARCHIVE DESTINATION "${Module_Output_Path}/"
 )
+
+target_compile_definitions(${module_name} PRIVATE AuraEngine_Use_Library)
+

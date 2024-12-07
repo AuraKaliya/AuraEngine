@@ -9,8 +9,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit AuraMainWindow(QWidget *parent = nullptr);
-    void initMenuBar();
+    explicit MainWindow(QWidget *parent = nullptr);
+
 private:
     EngineCore m_engineCore;
 signals:
