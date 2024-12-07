@@ -1,113 +1,52 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+#项目信息
+project(
+AuraEngine
+VERSION 0.0.1 
+LANGUAGES CXX
+)
 
-project(AuraEngine VERSION 0.1 LANGUAGES CXX)
-
+#编译系统设置
+##C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(BUILD_SHARED_LIBS ON)
+##qt编译flag
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#项目控制语句
+set(Build_From_AuraEngine ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+##项目属性
+set_property(GLOBAL PROPERTY ThirdParty_Path "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty")
+set_property(GLOBAL PROPERTY Module_Output_Path "${CMAKE_INSTALL_PREFIX}")
 
-############################## hong #############################
-add_compile_definitions(
-    QDEBUGCHECK
-
+#外部依赖引入
+##Qt依赖
+list(APPEND QtNeededModules
+Core
+Widgets
+Gui
+StateMachine
 )
-############################## hong #############################
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools StateMachine OpenGLWidgets Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools StateMachine OpenGLWidgets Core)
-
-#openssl
-set(OPENSSL_LIB ${CMAKE_CURRENT_SOURCE_DIR}/SOURCE/Engine/ThirdLibrary/openssl/lib)
-set(OPENSSL_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/SOURCE/Engine/ThirdLibrary/openssl/include)
-
-#lua
-set(LUA_LIB ${CMAKE_CURRENT_SOURCE_DIR}/SOURCE/Engine/ThirdLibrary/lua/lib)
-set(LUA_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/SOURCE/Engine/ThirdLibrary/lua/include)
-
-#third library
-link_directories(
-    ${LUA_LIB}
-    ${OPENSSL_LIB}
-)
-include_directories(
-    ${LUA_INCLUDE}
-    ${OPENSSL_INCLUDE}
-)
-
-
-file(GLOB_RECURSE SRC_FILES   "DEMO/*.h" "DEMO/*.cpp" "DATA/*.h" "DATA/*.cpp" "TOOL/*.hpp" "TOOL/*.h" "TOOL/*.cpp" "UI/*.h" "UI/*.cpp")
-
-message("=====")
-message(${CMAKE_CURRENT_SOURCE_DIR})
-
-set(PROJECT_SOURCES
-        main.cpp
-        enginecore.cpp
-        enginecore.h
-        ${SRC_FILES}
-)
-
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(AuraEngine
-        #MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-        UI/completeUI/editinstructioneditwidget.h UI/completeUI/editinstructioneditwidget.cpp
-        DATA/BaseClass/instructionfunctioninfomation.h DATA/BaseClass/instructionfunctioninfomation.cpp
-        UI/componentUI/argumenteditwidget.h UI/componentUI/argumenteditwidget.cpp
-        UI/componentUI/auramenubar.h UI/componentUI/auramenubar.cpp
-        DATA/BaseClass/engineinfomation.h DATA/BaseClass/engineinfomation.cpp
-        #auramainwindow.h auramainwindow.cpp
-    )
-
-    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-else()
-    if(ANDROID)
-        add_library(AuraEngine SHARED
-            ${PROJECT_SOURCES}
-        )
-    else()
-        add_executable(AuraEngine
-            ${PROJECT_SOURCES}
-        )
-    endif()
-
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-endif()
-
-# #third library
-# link_directories(
-#     ${LUA_LIB}
-#     ${OPENSSL_LIB}
+find_package(QT NAMES Qt6 Qt5 COMPONENTS ${QtNeededModules} REQUIRED )
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QtNeededModules}  REQUIRED)
+#AuraLibrary依赖
+# list(APPEND AuraLibraryNeededModules
+# AuraLibrary_Library
 # )
+find_package(AuraLibrary REQUIRED)
+
+#项目构建依赖
+add_subdirectory(App)
+add_subdirectory(Core)
+add_subdirectory(EngineCore)
+add_subdirectory(System)
+add_subdirectory(Widgets)
 
 
-target_link_libraries(AuraEngine PRIVATE
-    Qt${QT_VERSION_MAJOR}::Widgets
-    Qt${QT_VERSION_MAJOR}::StateMachine
-    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
-    Qt${QT_VERSION_MAJOR}::Core
-    lua54
-                                       )
-
-set_target_properties(AuraEngine PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
-
-install(TARGETS AuraEngine
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
-
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(AuraEngine)
-endif()
 
 
